@@ -1,0 +1,119 @@
+.category-main {
+  margin-top: 78px;
+  padding: 16px;
+}
+
+.category-hero {
+  background: linear-gradient(120deg, rgb(10, 62, 105), rgb(28, 125, 107) 65%, rgb(58, 157, 137));
+  color: white;
+  border-radius: 14px;
+  padding: 20px 22px;
+  margin-bottom: 16px;
+  box-shadow: 0 12px 24px rgba(9, 34, 58, 0.18);
+}
+
+.category-hero h1 {
+  margin-top: 0;
+  margin-bottom: 6px;
+}
+
+.category-hero p {
+  margin: 0;
+}
+
+.category-count {
+  margin-top: 10px;
+  font-weight: 600;
+  color: rgba(255, 255, 255, 0.9);
+}
+
+.category-grid {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.category-item {
+  border: 1px solid rgb(224, 231, 237);
+  border-radius: 12px;
+  padding: 10px;
+  background-color: white;
+  transition: transform 0.2s ease, box-shadow 0.2s ease;
+}
+
+.category-item:hover {
+  transform: translateY(-3px);
+  box-shadow: 0 14px 24px rgba(17, 34, 52, 0.14);
+}
+
+.category-item img {
+  width: 100%;
+  height: 180px;
+  padding: 12px;
+  background-color: rgb(255, 255, 255);
+  object-fit: contain;
+  border-radius: 8px;
+  border: 1px solid rgb(232, 238, 244);
+  transition: transform 0.2s ease;
+}
+
+.category-item:hover img {
+  transform: scale(1.04);
+}
+
+.category-item h3 {
+  margin: 8px 0 6px;
+}
+
+.category-rating {
+  font-size: 13px;
+  color: rgb(55, 63, 74);
+  margin-bottom: 4px;
+}
+
+.category-price {
+  font-weight: 700;
+  margin-bottom: 8px;
+}
+
+.category-item .add-to-cart-button {
+  width: 100%;
+  border-radius: 999px;
+  padding: 8px;
+}
+
+.toast {
+  position: fixed;
+  right: 16px;
+  bottom: 16px;
+  background-color: rgb(25, 137, 108);
+  color: white;
+  padding: 10px 14px;
+  border-radius: 8px;
+  opacity: 0;
+  pointer-events: none;
+  transform: translateY(14px);
+  transition: opacity 0.24s ease, transform 0.24s ease;
+  z-index: 1400;
+}
+
+.toast.show {
+  opacity: 1;
+  transform: translateY(0);
+}
+
+@media (max-width: 980px) {
+  .category-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 620px) {
+  .category-main {
+    padding: 10px;
+  }
+
+  .category-grid {
+    grid-template-columns: 1fr;
+  }
+}

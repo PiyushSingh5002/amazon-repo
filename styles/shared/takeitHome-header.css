@@ -1,0 +1,234 @@
+@import url('https://fonts.googleapis.com/css2?family=Pacifico&family=Righteous&display=swap');
+
+.tih-header {
+  background: linear-gradient(90deg, rgb(12, 38, 68), rgb(18, 62, 96));
+  color: white;
+  padding-left: 15px;
+  padding-right: 15px;
+
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+
+  position: sticky;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 64px;
+  z-index: 1000;
+}
+
+.tih-header-left-section {
+  width: 180px;
+}
+
+.brand-link {
+  border: none;
+  padding: 4px 6px;
+}
+
+.brand-link:hover {
+  border: none;
+  opacity: 0.95;
+}
+
+.brand-logo {
+  font-family: Righteous, Nunito, sans-serif;
+  font-size: 24px;
+  font-weight: 700;
+  letter-spacing: 0.2px;
+  background: linear-gradient(90deg, rgb(255, 222, 121), rgb(255, 156, 84));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+}
+
+.brand-logo-mobile {
+  display: none;
+  font-family: Pacifico, cursive;
+  font-size: 21px;
+  font-weight: 700;
+  color: rgb(255, 196, 106);
+}
+
+@media (max-width: 800px) {
+  .tih-header-left-section {
+    width: unset;
+  }
+}
+
+.header-link {
+  display: inline-block;
+  padding: 6px;
+  border-radius: 2px;
+  cursor: pointer;
+  text-decoration: none;
+  border: 1px solid rgba(0, 0, 0, 0);
+}
+
+.header-link:hover {
+  border: 1px solid white;
+}
+
+.tih-logo {
+  width: 100px;
+  margin-top: 5px;
+}
+
+.tih-mobile-logo {
+  display: none;
+}
+
+@media (max-width: 575px) {
+  .brand-logo {
+    display: none;
+  }
+
+  .brand-logo-mobile {
+    display: block;
+  }
+
+  .tih-logo {
+    display: none;
+  }
+
+  .tih-mobile-logo {
+    display: block;
+    height: 35px;
+    margin-top: 5px;
+  }
+}
+
+.tih-header-middle-section {
+  flex: 1;
+  max-width: 850px;
+  margin-left: 10px;
+  margin-right: 10px;
+  display: flex;
+}
+
+.search-bar {
+  flex: 1;
+  width: 0;
+  font-size: 16px;
+  height: 38px;
+  padding-left: 15px;
+  border: none;
+  border-top-left-radius: 4px;
+  border-bottom-left-radius: 4px;
+  border-top-right-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.search-button {
+  background-color: rgb(255, 170, 68);
+  border: none;
+  width: 45px;
+  height: 40px;
+  border-top-right-radius: 4px;
+  border-bottom-right-radius: 4px;
+  flex-shrink: 0;
+}
+
+.search-icon {
+  height: 22px;
+  margin-left: 2px;
+  margin-top: 3px;
+}
+
+.tih-header-right-section {
+  width: auto;
+  flex-shrink: 0;
+  display: flex;
+  justify-content: end;
+  gap: 6px;
+}
+
+.orders-link {
+  color: white;
+}
+
+.returns-text {
+  display: block;
+  font-size: 13px;
+}
+
+.orders-text {
+  display: block;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.small-line {
+  display: block;
+  font-size: 12px;
+}
+
+.big-line {
+  display: block;
+  font-size: 14px;
+  font-weight: 700;
+}
+
+.header-location {
+  color: white;
+  min-width: 110px;
+}
+
+.cart-link {
+  color: white;
+  display: flex;
+  align-items: center;
+  position: relative;
+}
+
+.cart-icon {
+  width: 50px;
+}
+
+.cart-text {
+  margin-top: 12px;
+  font-size: 15px;
+  font-weight: 700;
+}
+
+.cart-quantity {
+  color: rgb(255, 184, 77);
+  font-size: 16px;
+  font-weight: 700;
+
+  position: absolute;
+  top: 4px;
+  left: 22px;
+  
+  width: 26px;
+  text-align: center;
+}
+
+.account-link {
+  display: inline-block;
+}
+
+.cart-quantity.bump {
+  animation: cart-bump 0.32s ease;
+}
+
+@keyframes cart-bump {
+  0% {
+    transform: scale(1);
+  }
+
+  50% {
+    transform: scale(1.28);
+  }
+
+  100% {
+    transform: scale(1);
+  }
+}
+
+@media (max-width: 920px) {
+  .account-link,
+  .header-location {
+    display: none;
+  }
+}

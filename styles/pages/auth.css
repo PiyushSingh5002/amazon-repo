@@ -1,0 +1,87 @@
+.auth-page {
+  min-height: 100vh;
+  display: grid;
+  place-items: center;
+  padding: 24px;
+  background:
+    radial-gradient(circle at top right, rgba(255, 173, 51, 0.25), transparent 45%),
+    radial-gradient(circle at bottom left, rgba(0, 160, 127, 0.22), transparent 45%),
+    linear-gradient(120deg, rgb(243, 248, 255), rgb(255, 255, 255));
+}
+
+.auth-panel {
+  width: min(460px, 100%);
+  padding: 26px;
+  border-radius: 14px;
+  background: rgba(255, 255, 255, 0.95);
+  border: 1px solid rgba(12, 52, 88, 0.15);
+  box-shadow: 0 20px 42px rgba(15, 35, 60, 0.12);
+}
+
+.auth-brand-link {
+  font-family: 'Nunito', sans-serif;
+  font-size: 2rem;
+  font-weight: 800;
+  text-decoration: none;
+  color: rgb(255, 152, 0);
+}
+
+.auth-tagline {
+  margin: 8px 0 22px;
+  color: rgb(74, 80, 92);
+}
+
+.auth-form h1 {
+  margin-bottom: 14px;
+}
+
+.auth-form label {
+  display: grid;
+  gap: 6px;
+  margin-bottom: 12px;
+  font-size: 0.95rem;
+  color: rgb(40, 46, 57);
+}
+
+.auth-form input {
+  height: 42px;
+  border-radius: 9px;
+  border: 1px solid rgb(197, 205, 216);
+  padding: 0 12px;
+  font-size: 0.95rem;
+}
+
+.auth-form input:focus {
+  outline: none;
+  border-color: rgb(255, 152, 0);
+  box-shadow: 0 0 0 3px rgba(255, 152, 0, 0.16);
+}
+
+.auth-form button {
+  width: 100%;
+  margin-top: 6px;
+}
+
+.auth-message {
+  min-height: 20px;
+  margin-top: 12px;
+  font-size: 0.92rem;
+}
+
+.auth-message.success {
+  color: rgb(19, 132, 68);
+}
+
+.auth-message.error {
+  color: rgb(204, 50, 27);
+}
+
+.auth-switch {
+  margin-top: 14px;
+  color: rgb(69, 75, 84);
+}
+
+.auth-switch a {
+  color: rgb(0, 111, 186);
+  font-weight: 600;
+}

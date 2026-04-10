@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TakeItHome.com | Order Confirmation</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/shared/general.css">
+    <link rel="stylesheet" href="styles/shared/takeitHome-header.css">
+    <style>
+      .confirm-wrap {
+        margin-top: 78px;
+        padding: 18px;
+      }
+
+      .confirm-card {
+        max-width: 720px;
+        margin: 0 auto;
+        background: linear-gradient(130deg, rgb(232, 250, 240), rgb(226, 246, 255));
+        border: 1px solid rgb(184, 222, 200);
+        border-radius: 14px;
+        padding: 22px;
+      }
+
+      .confirm-card h1 {
+        margin-top: 0;
+      }
+
+      .confirm-actions {
+        margin-top: 12px;
+        display: flex;
+        gap: 8px;
+        flex-wrap: wrap;
+      }
+
+      .confirm-actions a {
+        text-decoration: none;
+        padding: 9px 14px;
+      }
+    </style>
+  </head>
+  <body>
+    <div class="tih-header">
+      <div class="tih-header-left-section">
+        <a href="index.html" class="header-link brand-link">
+          <div class="brand-logo">TakeItHome.com</div>
+          <div class="brand-logo-mobile">TIH</div>
+        </a>
+      </div>
+
+      <div class="tih-header-middle-section"></div>
+
+      <div class="tih-header-right-section">
+        <a class="cart-link header-link" href="checkout.html">
+          <img class="cart-icon" src="images/icons/cart-icon.png">
+          <div class="cart-quantity js-cart-quantity">0</div>
+          <div class="cart-text">Cart</div>
+        </a>
+      </div>
+    </div>
+
+    <main class="confirm-wrap">
+      <section class="confirm-card">
+        <h1>Your order has been placed! 🎉</h1>
+        <p>Thanks for shopping on TakeItHome.com. We'll pack it with care and deliver soon.</p>
+        <div class="confirm-actions">
+          <a class="button-primary" href="orders.html">View Orders</a>
+          <a class="button-secondary" href="index.html">Continue Shopping</a>
+        </div>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>TakeItHome.com</p>
+      <p class="footer-tagline">Take it home before it's gone!</p>
+    </footer>
+
+    <script type="module" src="scripts/site-shell.js"></script>
+  </body>
+</html>

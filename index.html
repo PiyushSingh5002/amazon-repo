@@ -1,0 +1,174 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TakeItHome.com | Shop Smart, Live Better</title>
+
+    <!-- This code is needed for responsive design to work.
+      (Responsive design = make the website look good on
+      smaller screen sizes like a phone or a tablet). -->
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <!-- Load fonts for the homepage. -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@400;600;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <!-- Here are the CSS files for this page. -->
+    <link rel="stylesheet" href="styles/shared/general.css">
+    <link rel="stylesheet" href="styles/shared/takeitHome-header.css">
+    <link rel="stylesheet" href="styles/shared/product-ui.css">
+    <link rel="stylesheet" href="styles/pages/takeitHome.css">
+  </head>
+  <body class="page-loading">
+    <div class="splash-screen js-splash-screen" aria-live="polite">
+      <div class="skeleton-shell">
+        <div class="skeleton-header shimmer"></div>
+        <div class="skeleton-hero shimmer"></div>
+        <div class="skeleton-grid">
+          <div class="skeleton-card shimmer"></div>
+          <div class="skeleton-card shimmer"></div>
+          <div class="skeleton-card shimmer"></div>
+          <div class="skeleton-card shimmer"></div>
+        </div>
+        <div class="splash-status">
+          <span class="splash-spinner" aria-hidden="true"></span>
+          <p>Loading fresh deals for you...</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="tih-header">
+      <div class="tih-header-left-section">
+        <a href="index.html" class="header-link brand-link">
+          <div class="brand-logo">TakeItHome.com</div>
+          <div class="brand-logo-mobile">TIH</div>
+        </a>
+      </div>
+
+      <a class="header-link header-location" href="#">
+        <span class="small-line">Deliver to</span>
+        <span class="big-line">Pune 411001</span>
+      </a>
+
+      <div class="tih-header-middle-section">
+        <input class="search-bar" type="text" placeholder="Search TakeItHome.com">
+
+        <button class="search-button">
+          <img class="search-icon" src="images/icons/search-icon.png">
+        </button>
+      </div>
+
+      <div class="tih-header-right-section">
+        <a class="orders-link header-link js-account-link" href="login.html">
+          <span class="small-line js-account-small">Hello, Guest</span>
+          <span class="big-line js-account-big">Sign in</span>
+        </a>
+
+        <a class="orders-link header-link" href="orders.html">
+          <span class="small-line">Returns</span>
+          <span class="big-line">&amp; Orders</span>
+        </a>
+
+        <a class="cart-link header-link" href="checkout.html">
+          <img class="cart-icon" src="images/icons/cart-icon.png">
+          <div class="cart-quantity js-cart-quantity">0</div>
+          <div class="cart-text">Cart</div>
+        </a>
+      </div>
+    </div>
+
+    <nav class="secondary-nav">
+      <a href="#" class="nav-chip is-active" data-category="all">All</a>
+      <a href="#" class="nav-chip" data-category="deals">Deals</a>
+      <a href="#" class="nav-chip" data-category="electronics">Electronics</a>
+      <a href="#" class="nav-chip" data-category="fashion">Fashion</a>
+      <a href="#" class="nav-chip" data-category="books">Books</a>
+      <a href="#" class="nav-chip" data-category="utensils">Kitchen</a>
+    </nav>
+
+    <div class="main js-home-content">
+      <section class="hero-carousel" aria-label="Top offers">
+        <div class="hero-slides js-hero-slides">
+          <article class="hero-slide is-active">
+            <img src="https://images.pexels.com/photos/356056/pexels-photo-356056.jpeg?auto=compress&cs=tinysrgb&w=1400&h=420&dpr=1" alt="Electronics offer banner">
+            <div class="hero-slide-content">
+              <p class="hero-kicker">Mega Offer</p>
+              <h2>Up to 70% Off on Electronics</h2>
+              <p>Steals on headphones, smartwatches, and student gadgets.</p>
+            </div>
+          </article>
+          <article class="hero-slide">
+            <img src="https://images.pexels.com/photos/996329/pexels-photo-996329.jpeg?auto=compress&cs=tinysrgb&w=1400&h=420&dpr=1" alt="Fashion arrivals banner">
+            <div class="hero-slide-content">
+              <p class="hero-kicker">Style Drop</p>
+              <h2>New Fashion Arrivals</h2>
+              <p>Fresh fits for campus days, weekend hangouts, and travel plans.</p>
+            </div>
+          </article>
+          <article class="hero-slide">
+            <img src="https://images.pexels.com/photos/1358900/pexels-photo-1358900.jpeg?auto=compress&cs=tinysrgb&w=1400&h=420&dpr=1" alt="Home and kitchen deals banner">
+            <div class="hero-slide-content">
+              <p class="hero-kicker">Home Upgrade</p>
+              <h2>Home and Kitchen Deals</h2>
+              <p>Shop utility essentials with free delivery above Rs. 499.</p>
+            </div>
+          </article>
+        </div>
+
+        <button class="hero-arrow hero-arrow-left js-hero-prev" aria-label="Previous offer">&#10094;</button>
+        <button class="hero-arrow hero-arrow-right js-hero-next" aria-label="Next offer">&#10095;</button>
+
+        <div class="hero-dots js-hero-dots" role="tablist" aria-label="Offer slides"></div>
+      </section>
+
+      <section class="category-deck">
+        <article class="category-card" data-category="deals" role="button" tabindex="0" aria-label="Show today deals products">
+          <h3>Today Deals</h3>
+          <div class="mini-grid js-mini-grid-deals"></div>
+          <a href="category.html?category=deals" class="see-more-link" data-category="deals">See more</a>
+        </article>
+
+        <article class="category-card" data-category="utensils" role="button" tabindex="0" aria-label="Show utensils deals products">
+          <h3>Utensils Deals</h3>
+          <div class="mini-grid js-mini-grid-utensils"></div>
+          <a href="category.html?category=utensils" class="see-more-link" data-category="utensils">See more</a>
+        </article>
+
+        <article class="category-card" data-category="clothes" role="button" tabindex="0" aria-label="Show fashion picks products">
+          <h3>Fashion Picks</h3>
+          <div class="mini-grid js-mini-grid-clothes"></div>
+          <a href="category.html?category=clothes" class="see-more-link" data-category="clothes">See more</a>
+        </article>
+
+        <article class="category-card" data-category="electronics" role="button" tabindex="0" aria-label="Show electronics essentials products">
+          <h3>Electronics Essentials</h3>
+          <div class="mini-grid js-mini-grid-electronics"></div>
+          <a href="category.html?category=electronics" class="see-more-link" data-category="electronics">See more</a>
+        </article>
+
+        <article class="category-card" data-category="books" role="button" tabindex="0" aria-label="Show books and learning products">
+          <h3>Books and Learning</h3>
+          <div class="mini-grid js-mini-grid-books"></div>
+          <a href="category.html?category=books" class="see-more-link" data-category="books">See more</a>
+        </article>
+      </section>
+
+      <section class="homepage-section products-section">
+        <div class="section-heading-row">
+          <h2 class="js-products-title">All Products</h2>
+          <p class="products-count js-products-count">0 items</p>
+        </div>
+        <div class="filtered-products-grid js-filtered-products-grid"></div>
+      </section>
+    </div>
+
+    <div class="toast js-toast">✅ Added to Cart!</div>
+
+    <footer class="site-footer">
+      <p>TakeItHome.com</p>
+      <p class="footer-tagline">Take it home before it's gone!</p>
+    </footer>
+
+    <script type="module" src="scripts/takeitHome.js"></script>
+  </body>
+</html>

@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TakeItHome.com | Login</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/shared/general.css">
+    <link rel="stylesheet" href="styles/pages/auth.css">
+  </head>
+  <body>
+    <main class="auth-page">
+      <section class="auth-panel">
+        <a href="index.html" class="auth-brand-link">TakeItHome.com</a>
+        <p class="auth-tagline">Sign in to continue shopping and access your cart.</p>
+
+        <form class="auth-form js-login-form">
+          <h1>Login</h1>
+          <label>
+            Email
+            <input name="email" type="email" placeholder="you@example.com" required>
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" placeholder="Enter password" required>
+          </label>
+          <button class="button-primary" type="submit">Login</button>
+          <p class="auth-message js-auth-message"></p>
+        </form>
+
+        <p class="auth-switch">New to TakeItHome? <a href="signup.html">Create an account</a></p>
+      </section>
+    </main>
+
+    <script type="module" src="scripts/auth-page.js"></script>
+  </body>
+</html>

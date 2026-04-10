@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TakeItHome.com | Payment Methods</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/shared/general.css">
+    <link rel="stylesheet" href="styles/shared/takeitHome-header.css">
+    <link rel="stylesheet" href="styles/pages/account.css">
+  </head>
+  <body>
+    <div class="tih-header">
+      <div class="tih-header-left-section">
+        <a href="index.html" class="header-link brand-link">
+          <div class="brand-logo">TakeItHome.com</div>
+          <div class="brand-logo-mobile">TIH</div>
+        </a>
+      </div>
+
+      <div class="tih-header-middle-section">
+        <input class="search-bar" type="text" placeholder="Search">
+        <button class="search-button">
+          <img class="search-icon" src="images/icons/search-icon.png">
+        </button>
+      </div>
+
+      <div class="tih-header-right-section">
+        <a class="orders-link header-link" href="orders.html">
+          <span class="returns-text">Your</span>
+          <span class="orders-text">Orders</span>
+        </a>
+
+        <a class="cart-link header-link" href="checkout.html">
+          <img class="cart-icon" src="images/icons/cart-icon.png">
+          <div class="cart-quantity js-cart-quantity">0</div>
+          <div class="cart-text">Cart</div>
+        </a>
+      </div>
+    </div>
+
+    <main class="account-main">
+      <div class="account-hero">
+        <h1>Payment Methods</h1>
+        <p>Add your cards once, checkout faster every time.</p>
+      </div>
+
+      <section class="account-grid">
+        <form class="account-form js-payment-form">
+          <h2>Add New Card</h2>
+          <input name="cardName" placeholder="Name on card" required>
+          <input name="cardNumber" placeholder="Card number" maxlength="19" required>
+          <input name="expiry" placeholder="MM/YY" maxlength="5" required>
+          <button class="button-primary" type="submit">Save Card</button>
+        </form>
+
+        <section class="account-list-wrap">
+          <h2>Saved Cards</h2>
+          <div class="account-list js-payment-list"></div>
+        </section>
+      </section>
+    </main>
+
+    <footer class="site-footer">
+      <p>TakeItHome.com</p>
+      <p class="footer-tagline">Take it home before it is gone!</p>
+    </footer>
+
+    <script type="module" src="scripts/payment-methods.js"></script>
+  </body>
+</html>

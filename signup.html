@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <title>TakeItHome.com | Signup</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Nunito:wght@500;700;800&family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+
+    <link rel="stylesheet" href="styles/shared/general.css">
+    <link rel="stylesheet" href="styles/pages/auth.css">
+  </head>
+  <body>
+    <main class="auth-page">
+      <section class="auth-panel">
+        <a href="index.html" class="auth-brand-link">TakeItHome.com</a>
+        <p class="auth-tagline">Create your account to get personalized shopping.</p>
+
+        <form class="auth-form js-signup-form">
+          <h1>Signup</h1>
+          <label>
+            Full Name
+            <input name="name" type="text" placeholder="Your name" required>
+          </label>
+          <label>
+            Email
+            <input name="email" type="email" placeholder="you@example.com" required>
+          </label>
+          <label>
+            Password
+            <input name="password" type="password" placeholder="Minimum 6 characters" required>
+          </label>
+          <label>
+            Confirm Password
+            <input name="confirmPassword" type="password" placeholder="Re-enter password" required>
+          </label>
+          <button class="button-primary" type="submit">Create Account</button>
+          <p class="auth-message js-auth-message"></p>
+        </form>
+
+        <p class="auth-switch">Already have an account? <a href="login.html">Login</a></p>
+      </section>
+    </main>
+
+    <script type="module" src="scripts/auth-page.js"></script>
+  </body>
+</html>

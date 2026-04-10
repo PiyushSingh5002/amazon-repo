@@ -1,0 +1,88 @@
+.account-main {
+  margin-top: 88px;
+  max-width: 1050px;
+  margin-left: auto;
+  margin-right: auto;
+  padding: 0 18px 24px;
+}
+
+.account-hero {
+  background: linear-gradient(120deg, rgb(11, 74, 111), rgb(50, 118, 85));
+  color: white;
+  border-radius: 12px;
+  padding: 22px;
+  margin-bottom: 18px;
+}
+
+.account-hero h1 {
+  margin-top: 0;
+  margin-bottom: 8px;
+}
+
+.account-grid {
+  display: grid;
+  grid-template-columns: 320px 1fr;
+  gap: 14px;
+}
+
+.account-form,
+.account-list-wrap {
+  background-color: white;
+  border: 1px solid rgb(226, 231, 236);
+  border-radius: 10px;
+  padding: 16px;
+}
+
+.account-form h2,
+.account-list-wrap h2 {
+  margin-top: 0;
+  margin-bottom: 12px;
+}
+
+.account-form {
+  display: grid;
+  gap: 10px;
+  align-content: start;
+}
+
+.account-form input {
+  border: 1px solid rgb(205, 214, 222);
+  border-radius: 8px;
+  padding: 10px;
+  font-size: 14px;
+}
+
+.account-list {
+  display: grid;
+  gap: 10px;
+}
+
+.account-item {
+  border: 1px solid rgb(221, 228, 235);
+  border-radius: 8px;
+  padding: 12px;
+  background-color: rgb(249, 251, 253);
+}
+
+.account-item-title {
+  font-weight: 700;
+  margin-bottom: 4px;
+}
+
+.account-item button {
+  margin-top: 8px;
+  padding: 7px 10px;
+}
+
+.empty-message {
+  background-color: rgb(247, 249, 251);
+  border: 1px dashed rgb(196, 205, 213);
+  border-radius: 8px;
+  padding: 12px;
+}
+
+@media (max-width: 820px) {
+  .account-grid {
+    grid-template-columns: 1fr;
+  }
+}
