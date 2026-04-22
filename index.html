@@ -56,9 +56,13 @@
         <button class="search-button">
           <img class="search-icon" src="images/icons/search-icon.png">
         </button>
+
+        <div class="search-suggestions js-search-suggestions"></div>
       </div>
 
       <div class="tih-header-right-section">
+        <button class="dark-mode-toggle js-dark-mode-toggle" type="button" aria-label="Toggle dark mode">🌙</button>
+
         <a class="orders-link header-link js-account-link" href="login.html">
           <span class="small-line js-account-small">Hello, Guest</span>
           <span class="big-line js-account-big">Sign in</span>
@@ -156,7 +160,16 @@
       <section class="homepage-section products-section">
         <div class="section-heading-row">
           <h2 class="js-products-title">All Products</h2>
-          <p class="products-count js-products-count">0 items</p>
+          <div class="section-heading-controls">
+            <select class="sort-select js-sort-select" id="sort-products">
+              <option value="default">Sort by</option>
+              <option value="price-low">Price: Low → High</option>
+              <option value="price-high">Price: High → Low</option>
+              <option value="rating">Best Rating</option>
+              <option value="name">Name: A → Z</option>
+            </select>
+            <p class="products-count js-products-count">0 items</p>
+          </div>
         </div>
         <div class="filtered-products-grid js-filtered-products-grid"></div>
       </section>
@@ -164,9 +177,39 @@
 
     <div class="toast js-toast">✅ Added to Cart!</div>
 
+    <button class="back-to-top js-back-to-top" aria-label="Back to top">↑</button>
+
     <footer class="site-footer">
-      <p>TakeItHome.com</p>
-      <p class="footer-tagline">Take it home before it's gone!</p>
+      <div class="footer-grid">
+        <div class="footer-col">
+          <h4>Get to Know Us</h4>
+          <a href="#">About TakeItHome</a>
+          <a href="#">Careers</a>
+          <a href="#">Press Releases</a>
+        </div>
+        <div class="footer-col">
+          <h4>Connect with Us</h4>
+          <a href="#">Facebook</a>
+          <a href="#">Twitter</a>
+          <a href="#">Instagram</a>
+        </div>
+        <div class="footer-col">
+          <h4>Make Money with Us</h4>
+          <a href="#">Sell on TakeItHome</a>
+          <a href="#">Become an Affiliate</a>
+          <a href="#">Advertise Products</a>
+        </div>
+        <div class="footer-col">
+          <h4>Let Us Help You</h4>
+          <a href="#">Your Account</a>
+          <a href="#">Returns Centre</a>
+          <a href="checkout.html">Your Cart</a>
+        </div>
+      </div>
+      <div class="footer-bottom">
+        <p class="footer-brand">TakeItHome.com</p>
+        <p class="footer-tagline">Take it home before it's gone! © 2026</p>
+      </div>
     </footer>
 
     <script type="module" src="scripts/takeitHome.js"></script>

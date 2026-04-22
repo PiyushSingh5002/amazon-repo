@@ -58,3 +58,22 @@ export function getProductsByCategory(category, options = {}) {
   const filteredProducts = products.filter((product) => product.category === normalizedCategory);
   return typeof limit === 'number' ? filteredProducts.slice(0, limit) : filteredProducts;
 }
+
+export function searchProducts(query) {
+  if (!query || !query.trim()) {
+    return getProducts();
+  }
+
+  const terms = query.trim().toLowerCase().split(/\s+/);
+  const products = getProducts();
+
+  return products.filter((product) => {
+    const name = (product.name || '').toLowerCase();
+    const keywords = Array.isArray(product.keywords) ? product.keywords.join(' ').toLowerCase() : '';
+    const category = (product.category || '').toLowerCase();
+    const description = (product.description || '').toLowerCase();
+    const searchable = `${name} ${keywords} ${category} ${description}`;
+
+    return terms.every((term) => searchable.includes(term));
+  });
+}

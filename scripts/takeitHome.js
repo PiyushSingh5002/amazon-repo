@@ -1,5 +1,5 @@
 import {addToCart, syncCartFromStorage} from './cart.js';
-import {getProducts, getProductById, getProductsByCategory, normalizeCategory} from './products.js';
+import {getProducts, getProductById, getProductsByCategory, normalizeCategory, searchProducts} from './products.js';
 import {updateCartBadge} from './site-shell.js';
 import {
   animateAddButton,
@@ -21,15 +21,25 @@ const CATEGORY_TITLES = {
 };
 
 let selectedCategory = 'all';
+let currentSearchQuery = '';
+let currentSort = 'default';
 const PRODUCTS_PER_VIEW = 12;
 
 const productsTitleElement = document.querySelector('.js-products-title');
 const productsCountElement = document.querySelector('.js-products-count');
 const productsGridElement = document.querySelector('.js-filtered-products-grid');
 const productsSectionElement = document.querySelector('.products-section');
+const searchBarElement = document.querySelector('.search-bar');
+const searchButtonElement = document.querySelector('.search-button');
+const searchSuggestionsElement = document.querySelector('.js-search-suggestions');
+const sortSelectElement = document.querySelector('.js-sort-select');
 
 function getFilteredProducts(category) {
   const normalizedCategory = normalizeCategory(category);
+
+  if (currentSearchQuery) {
+    return searchProducts(currentSearchQuery);
+  }
 
   if (normalizedCategory === 'all') {
     return getProducts();
@@ -38,18 +48,64 @@ function getFilteredProducts(category) {
   return getProductsByCategory(normalizedCategory, {limit: PRODUCTS_PER_VIEW});
 }
 
+function sortProducts(products) {
+  if (currentSort === 'default') {
+    return products;
+  }
+
+  const sorted = [...products];
+
+  switch (currentSort) {
+    case 'price-low':
+      sorted.sort((a, b) => (a.price || a.priceCents || 0) - (b.price || b.priceCents || 0));
+      break;
+    case 'price-high':
+      sorted.sort((a, b) => (b.price || b.priceCents || 0) - (a.price || a.priceCents || 0));
+      break;
+    case 'rating': {
+      sorted.sort((a, b) => {
+        const ratingA = typeof a.rating === 'number' ? a.rating : (a.rating?.stars || 0);
+        const ratingB = typeof b.rating === 'number' ? b.rating : (b.rating?.stars || 0);
+        return ratingB - ratingA;
+      });
+      break;
+    }
+    case 'name':
+      sorted.sort((a, b) => a.name.localeCompare(b.name));
+      break;
+  }
+
+  return sorted;
+}
+
 function renderMainProductGrid() {
-  const filteredProducts = getFilteredProducts(selectedCategory);
+  let filteredProducts = getFilteredProducts(selectedCategory);
+  filteredProducts = sortProducts(filteredProducts);
 
   productsGridElement.classList.add('is-updating');
 
-  productsTitleElement.textContent = CATEGORY_TITLES[selectedCategory] || 'Products';
+  if (currentSearchQuery) {
+    productsTitleElement.textContent = `Results for \u201C${currentSearchQuery}\u201D`;
+  } else {
+    productsTitleElement.textContent = CATEGORY_TITLES[selectedCategory] || 'Products';
+  }
+
   productsCountElement.textContent = `${filteredProducts.length} items`;
 
-  renderProducts({
-    container: productsGridElement,
-    products: filteredProducts
-  });
+  if (filteredProducts.length === 0) {
+    productsGridElement.innerHTML = `
+      <div class="no-results">
+        <div class="no-results-icon">\uD83D\uDD0D</div>
+        <h3>No products found</h3>
+        <p>Try a different search term or browse our categories above.</p>
+      </div>
+    `;
+  } else {
+    renderProducts({
+      container: productsGridElement,
+      products: filteredProducts
+    });
+  }
 
   requestAnimationFrame(() => {
     productsGridElement.classList.remove('is-updating');
@@ -84,6 +140,12 @@ function setCategory(category, options = {}) {
   const {scrollToSection = true} = options;
   const normalizedCategory = normalizeCategory(category);
 
+  // Clear search when switching categories
+  currentSearchQuery = '';
+  if (searchBarElement) {
+    searchBarElement.value = '';
+  }
+
   if (selectedCategory === normalizedCategory) {
     return;
   }
@@ -99,6 +161,143 @@ function setCategory(category, options = {}) {
     });
   }
 }
+
+/* ─── Search ─── */
+
+function performSearch(query) {
+  const trimmedQuery = (query || '').trim();
+
+  if (!trimmedQuery) {
+    currentSearchQuery = '';
+    selectedCategory = 'all';
+    updateActiveCategoryUI();
+    renderMainProductGrid();
+    return;
+  }
+
+  currentSearchQuery = trimmedQuery;
+
+  // Deactivate all category chips while showing search results
+  document.querySelectorAll('.nav-chip').forEach((chip) => chip.classList.remove('is-active'));
+  document.querySelectorAll('.category-card').forEach((card) => card.classList.remove('is-active'));
+
+  renderMainProductGrid();
+
+  if (productsSectionElement) {
+    productsSectionElement.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
+  }
+
+  hideSuggestions();
+}
+
+function showSuggestions(query) {
+  if (!searchSuggestionsElement || !query || query.trim().length < 2) {
+    hideSuggestions();
+    return;
+  }
+
+  const results = searchProducts(query.trim()).slice(0, 6);
+  const q = query.trim().toLowerCase();
+
+  if (results.length === 0) {
+    searchSuggestionsElement.innerHTML = `
+      <div class="search-no-results">No products match \u201C<strong>${q}</strong>\u201D</div>
+    `;
+    searchSuggestionsElement.classList.add('is-visible');
+    return;
+  }
+
+  searchSuggestionsElement.innerHTML = results
+    .map((product) => {
+      const name = product.name;
+      const idx = name.toLowerCase().indexOf(q);
+      let displayName = name;
+
+      if (idx >= 0) {
+        displayName =
+          name.substring(0, idx) +
+          `<span class="highlight">${name.substring(idx, idx + q.length)}</span>` +
+          name.substring(idx + q.length);
+      }
+
+      return `
+        <div class="search-suggestion-item" data-product-name="${name}">
+          <img src="${product.image}" alt="" loading="lazy">
+          <div class="search-suggestion-text">${displayName}</div>
+        </div>
+      `;
+    })
+    .join('');
+
+  searchSuggestionsElement.classList.add('is-visible');
+
+  searchSuggestionsElement.querySelectorAll('.search-suggestion-item').forEach((item) => {
+    item.addEventListener('click', () => {
+      searchBarElement.value = item.dataset.productName;
+      performSearch(item.dataset.productName);
+    });
+  });
+}
+
+function hideSuggestions() {
+  if (searchSuggestionsElement) {
+    searchSuggestionsElement.classList.remove('is-visible');
+  }
+}
+
+function attachSearchHandlers() {
+  if (!searchBarElement || !searchButtonElement) {
+    return;
+  }
+
+  searchButtonElement.addEventListener('click', () => {
+    performSearch(searchBarElement.value);
+  });
+
+  searchBarElement.addEventListener('keydown', (event) => {
+    if (event.key === 'Enter') {
+      performSearch(searchBarElement.value);
+    }
+  });
+
+  let debounceTimer;
+  searchBarElement.addEventListener('input', () => {
+    clearTimeout(debounceTimer);
+    debounceTimer = setTimeout(() => {
+      showSuggestions(searchBarElement.value);
+    }, 200);
+  });
+
+  searchBarElement.addEventListener('focus', () => {
+    if (searchBarElement.value.trim().length >= 2) {
+      showSuggestions(searchBarElement.value);
+    }
+  });
+
+  document.addEventListener('click', (event) => {
+    if (!event.target.closest('.tih-header-middle-section')) {
+      hideSuggestions();
+    }
+  });
+}
+
+/* ─── Sort ─── */
+
+function attachSortHandler() {
+  if (!sortSelectElement) {
+    return;
+  }
+
+  sortSelectElement.addEventListener('change', () => {
+    currentSort = sortSelectElement.value;
+    renderMainProductGrid();
+  });
+}
+
+/* ─── Categories ─── */
 
 function attachCategoryHandlers() {
   const secondaryNav = document.querySelector('.secondary-nav');
@@ -150,6 +349,8 @@ function attachCategoryHandlers() {
   });
 }
 
+/* ─── Cart ─── */
+
 function updateCartQuantity() {
   const cartItems = syncCartFromStorage();
   const cartQuantity = cartItems.reduce((sum, item) => sum + item.quantity, 0);
@@ -175,6 +376,8 @@ function handleAddToCart(productId, button) {
   const toastMessage = product ? `${product.name} added to cart` : 'Item added to cart';
   showToast(toastMessage);
 }
+
+/* ─── Hero Slider ─── */
 
 function initHeroSlider() {
   const heroSlides = Array.from(document.querySelectorAll('.hero-slide'));
@@ -241,6 +444,8 @@ function initHeroSlider() {
   }
 }
 
+/* ─── Splash Screen ─── */
+
 function initSplashScreen() {
   const splashElement = document.querySelector('.js-splash-screen');
   const contentElement = document.querySelector('.js-home-content');
@@ -260,6 +465,37 @@ function initSplashScreen() {
   }, 1500);
 }
 
+/* ─── Back to Top ─── */
+
+function initBackToTop() {
+  const btn = document.querySelector('.js-back-to-top');
+  if (!btn) {
+    return;
+  }
+
+  window.addEventListener('scroll', () => {
+    btn.classList.toggle('is-visible', window.scrollY > 400);
+  });
+
+  btn.addEventListener('click', () => {
+    window.scrollTo({top: 0, behavior: 'smooth'});
+  });
+}
+
+/* ─── URL Search Param ─── */
+
+function handleUrlSearchParam() {
+  const params = new URLSearchParams(window.location.search);
+  const query = params.get('search');
+
+  if (query && searchBarElement) {
+    searchBarElement.value = query;
+    performSearch(query);
+  }
+}
+
+/* ─── Init ─── */
+
 function init() {
   initProductModal({
     onAddToCart: handleAddToCart
@@ -272,6 +508,8 @@ function init() {
   renderMiniGrid('books');
 
   attachCategoryHandlers();
+  attachSearchHandlers();
+  attachSortHandler();
   attachProductGridInteractions({
     container: productsGridElement,
     getProductById,
@@ -283,6 +521,8 @@ function init() {
   updateCartQuantity();
   initHeroSlider();
   initSplashScreen();
+  initBackToTop();
+  handleUrlSearchParam();
 }
 
 init();

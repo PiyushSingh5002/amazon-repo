@@ -122,3 +122,216 @@ select:focus,
 input:focus {
   outline: 2px solid rgb(255, 153, 0);
 }
+
+/* ─── Dark Mode ─── */
+
+body.dark-mode {
+  background-color: rgb(16, 20, 26);
+  color: rgb(215, 220, 228);
+}
+
+body.dark-mode .tih-header {
+  background: linear-gradient(90deg, rgb(8, 20, 34), rgb(10, 32, 52));
+}
+
+body.dark-mode .secondary-nav {
+  background: rgb(18, 26, 36);
+}
+
+body.dark-mode .nav-chip:hover,
+body.dark-mode .nav-chip.is-active {
+  border-color: rgb(200, 160, 80);
+  background-color: rgba(255, 169, 48, 0.12);
+}
+
+body.dark-mode .category-card {
+  background-color: rgb(26, 32, 42);
+  border-color: rgb(40, 48, 60);
+}
+
+body.dark-mode .category-card h3,
+body.dark-mode .section-heading-row h2 {
+  color: rgb(220, 225, 232);
+}
+
+body.dark-mode .category-card:hover,
+body.dark-mode .category-card.is-active {
+  box-shadow: 0 12px 22px rgba(0, 0, 0, 0.3);
+}
+
+body.dark-mode .homepage-section {
+  background-color: rgb(26, 32, 42);
+  border-color: rgb(40, 48, 60);
+}
+
+body.dark-mode .product-card {
+  background: rgb(26, 32, 42);
+  border-color: rgb(40, 48, 60);
+}
+
+body.dark-mode .product-card h3 {
+  color: rgb(215, 220, 228);
+}
+
+body.dark-mode .product-card:hover {
+  box-shadow: 0 10px 18px rgba(0, 0, 0, 0.35);
+}
+
+body.dark-mode .product-image-wrap {
+  background: rgb(32, 38, 48);
+  border-color: rgb(44, 52, 64);
+}
+
+body.dark-mode .see-more-link {
+  color: rgb(100, 195, 215);
+}
+
+body.dark-mode .mini-item img {
+  background: rgb(32, 38, 48);
+  border-color: rgb(44, 52, 64);
+}
+
+body.dark-mode .mini-item p {
+  color: rgb(180, 188, 198);
+}
+
+body.dark-mode .product-modal-dialog {
+  background: linear-gradient(155deg, rgb(26, 32, 42), rgb(20, 26, 36));
+  border-color: rgb(44, 52, 64);
+}
+
+body.dark-mode .product-modal-media {
+  background: rgb(32, 38, 48);
+  border-color: rgb(44, 52, 64);
+}
+
+body.dark-mode .product-modal-content h2,
+body.dark-mode .product-modal-description {
+  color: rgb(205, 212, 222);
+}
+
+body.dark-mode .product-modal-close {
+  background: rgba(36, 42, 54, 0.92);
+  color: rgb(205, 212, 222);
+}
+
+body.dark-mode .search-bar {
+  background: rgb(32, 38, 48);
+  color: rgb(215, 220, 228);
+}
+
+body.dark-mode .search-suggestions {
+  background: rgb(26, 32, 42);
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.45);
+}
+
+body.dark-mode .search-suggestion-item {
+  color: rgb(205, 212, 222);
+  border-bottom-color: rgb(38, 46, 58);
+}
+
+body.dark-mode .search-suggestion-item:hover {
+  background: rgb(32, 38, 50);
+}
+
+body.dark-mode .search-suggestion-item img {
+  border-color: rgb(44, 52, 64);
+  background: rgb(32, 38, 48);
+}
+
+body.dark-mode .account-dropdown {
+  background: rgb(26, 32, 42);
+  border-color: rgb(44, 52, 64);
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.4);
+}
+
+body.dark-mode .account-dropdown-links a {
+  color: rgb(205, 212, 222);
+}
+
+body.dark-mode .account-dropdown-links a:hover {
+  background: rgb(32, 40, 52);
+}
+
+body.dark-mode .account-dropdown-signout {
+  background: rgb(34, 26, 26);
+  border-top-color: rgb(52, 40, 40);
+}
+
+body.dark-mode .account-dropdown-signout:hover {
+  background: rgb(48, 30, 30);
+}
+
+body.dark-mode .sort-select {
+  background: rgb(32, 38, 48);
+  color: rgb(205, 212, 222);
+  border-color: rgb(44, 52, 64);
+}
+
+body.dark-mode .no-results h3 {
+  color: rgb(215, 220, 228);
+}
+
+body.dark-mode .site-footer {
+  background: linear-gradient(90deg, rgb(6, 16, 28), rgb(8, 30, 46));
+}
+
+body.dark-mode .toast {
+  background-color: rgb(16, 105, 82);
+}
+
+body.dark-mode .splash-screen {
+  background: radial-gradient(circle at top right, rgb(16, 24, 36), rgb(12, 20, 30) 52%, rgb(18, 26, 38));
+}
+
+body.dark-mode .shimmer {
+  background: linear-gradient(110deg, rgb(28, 36, 46) 8%, rgb(38, 46, 58) 18%, rgb(28, 36, 46) 33%);
+  background-size: 200% 100%;
+}
+
+body.dark-mode .button-primary {
+  color: rgb(20, 20, 20);
+}
+
+body.dark-mode .products-count {
+  color: rgb(140, 150, 165);
+}
+
+body.dark-mode .hero-slide-content {
+  color: white;
+}
+
+body.dark-mode .search-no-results {
+  color: rgb(140, 150, 165);
+}
+
+/* Dark mode for checkout and orders pages */
+
+body.dark-mode .checkout-header {
+  background: linear-gradient(90deg, rgb(8, 20, 34), rgb(10, 32, 52));
+}
+
+body.dark-mode .order-container {
+  background: rgb(26, 32, 42);
+  border-color: rgb(40, 48, 60);
+}
+
+body.dark-mode .order-header {
+  background: rgb(22, 28, 38);
+  border-color: rgb(40, 48, 60);
+}
+
+body.dark-mode .page-title {
+  color: rgb(215, 220, 228);
+}
+
+body.dark-mode .cart-item-container {
+  background: rgb(26, 32, 42);
+  border-color: rgb(40, 48, 60);
+}
+
+body.dark-mode .payment-summary {
+  background: rgb(26, 32, 42);
+  border-color: rgb(40, 48, 60);
+  color: rgb(205, 212, 222);
+}

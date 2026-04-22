@@ -232,3 +232,217 @@
     display: none;
   }
 }
+
+/* ─── Account Dropdown ─── */
+
+.js-account-link.has-dropdown {
+  position: relative;
+}
+
+.account-dropdown {
+  position: absolute;
+  top: calc(100% + 6px);
+  right: 0;
+  min-width: 270px;
+  background: white;
+  border-radius: 14px;
+  box-shadow: 0 18px 44px rgba(0, 0, 0, 0.22);
+  border: 1px solid rgba(0, 0, 0, 0.07);
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.22s ease, transform 0.22s ease, visibility 0.22s;
+  z-index: 1100;
+  overflow: hidden;
+  pointer-events: none;
+}
+
+.js-account-link.has-dropdown:hover .account-dropdown {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.account-dropdown-header {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 16px;
+  background: linear-gradient(135deg, rgb(12, 38, 68), rgb(24, 72, 112));
+  color: white;
+}
+
+.account-dropdown-avatar {
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(135deg, rgb(255, 178, 76), rgb(255, 120, 50));
+  display: grid;
+  place-items: center;
+  font-size: 19px;
+  font-weight: 800;
+  color: white;
+  flex-shrink: 0;
+}
+
+.account-dropdown-name {
+  font-weight: 700;
+  font-size: 15px;
+}
+
+.account-dropdown-email {
+  font-size: 12px;
+  opacity: 0.75;
+  margin-top: 2px;
+}
+
+.account-dropdown-links {
+  padding: 6px 0;
+}
+
+.account-dropdown-links a {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  padding: 10px 16px;
+  color: rgb(33, 33, 33);
+  text-decoration: none;
+  font-size: 14px;
+  transition: background 0.15s;
+}
+
+.account-dropdown-links a:hover {
+  background: rgb(243, 246, 249);
+}
+
+.dd-icon {
+  font-size: 16px;
+  width: 22px;
+  text-align: center;
+}
+
+.account-dropdown-signout {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  padding: 13px 16px;
+  border: none;
+  border-top: 1px solid rgb(230, 230, 230);
+  background: rgb(253, 249, 248);
+  color: rgb(200, 50, 30);
+  font-size: 14px;
+  font-weight: 600;
+  cursor: pointer;
+  text-align: left;
+  transition: background 0.15s;
+}
+
+.account-dropdown-signout:hover {
+  background: rgb(255, 235, 232);
+}
+
+/* ─── Search Suggestions ─── */
+
+.tih-header-middle-section {
+  position: relative;
+}
+
+.search-suggestions {
+  position: absolute;
+  top: 100%;
+  left: 0;
+  right: 0;
+  background: white;
+  border-radius: 0 0 12px 12px;
+  box-shadow: 0 12px 32px rgba(0, 0, 0, 0.18);
+  max-height: 360px;
+  overflow-y: auto;
+  z-index: 1050;
+  display: none;
+}
+
+.search-suggestions.is-visible {
+  display: block;
+  animation: suggestions-in 0.18s ease;
+}
+
+@keyframes suggestions-in {
+  from {
+    opacity: 0;
+    transform: translateY(-4px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.search-suggestion-item {
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  padding: 10px 16px;
+  cursor: pointer;
+  transition: background 0.12s;
+  color: rgb(33, 33, 33);
+  font-size: 14px;
+  border-bottom: 1px solid rgb(245, 245, 245);
+}
+
+.search-suggestion-item:last-child {
+  border-bottom: none;
+}
+
+.search-suggestion-item:hover {
+  background: rgb(243, 247, 251);
+}
+
+.search-suggestion-item img {
+  width: 42px;
+  height: 42px;
+  object-fit: contain;
+  border-radius: 6px;
+  border: 1px solid rgb(235, 235, 235);
+  background: white;
+}
+
+.search-suggestion-text {
+  flex: 1;
+}
+
+.search-suggestion-text .highlight {
+  font-weight: 700;
+  color: rgb(177, 62, 12);
+}
+
+.search-no-results {
+  padding: 18px;
+  text-align: center;
+  color: rgb(100, 100, 100);
+  font-size: 14px;
+}
+
+/* ─── Dark Mode Toggle ─── */
+
+.dark-mode-toggle {
+  background: none;
+  border: 1px solid rgba(255, 255, 255, 0.25);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  font-size: 17px;
+  cursor: pointer;
+  display: grid;
+  place-items: center;
+  transition: background 0.2s, border-color 0.2s, transform 0.25s;
+  flex-shrink: 0;
+}
+
+.dark-mode-toggle:hover {
+  background: rgba(255, 255, 255, 0.1);
+  border-color: rgba(255, 255, 255, 0.5);
+  transform: rotate(20deg);
+}
+
